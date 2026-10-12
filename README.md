@@ -1,2 +1,22 @@
-# bis-bas-self-insight
-BIS/BAS 기반 한국어 자기이해 설문 · 20문항과 즉시 결과
+# BIS/BAS Self Insight
+
+한국어 20문항 자기이해 설문. 별도 설치, API 키, 서버 및 외부 라이브러리 없이 동작합니다.
+
+## 실행
+`site/index.html`을 브라우저에서 열거나 `site`를 정적 HTTP 서버로 제공합니다.
+
+## 검증
+Node.js 22 이상에서 `node --test tests/*.test.cjs`를 실행합니다.
+
+## GitHub Pages
+저장소 Settings → Pages → Source를 GitHub Actions로 설정합니다. main에 push하면 검증 후 site 폴더를 배포합니다. GitHub Free 개인 계정에서는 공개 저장소가 필요합니다. Pro는 비공개 저장소에서 공개 페이지를 배포할 수 있습니다.
+
+## 채점
+1~4점 응답, 5·7번 역채점(5−응답값). BIS 1~7번, BAS 보상반응성 8~12번, 목표추구 13~16번, 재미추구 17~20번. 네 점수를 별도로 표시합니다. 평균 설명에 반올림 전 값을 사용합니다. 총점, 규준 판정, 백분위, 진단은 제공하지 않습니다.
+
+## 자료와 한계
+문항: 사용자가 제공한 BIS,BAS.txt의 쉬운 표현 20문항을 그대로 사용했습니다. 공식적으로 타당화된 한국어판과 동일하지 않습니다. BIS의 이름은 카버·화이트 척도의 문항 내용을 설명하며 개정 강화민감성이론의 갈등 조절 체계를 별도로 측정하지 않습니다. 원척도 참고: Carver, C. S., & White, T. L. (1994). Behavioral inhibition, behavioral activation, and affective responses to impending reward and punishment: The BIS/BAS Scales. Journal of Personality and Social Psychology, 67(2), 319–333. https://doi.org/10.1037/0022-3514.67.2.319
+제공된 변형 번역문의 권리자는 파일에서 확인되지 않았습니다. 원척도와 번역문에 대한 재배포 권리를 확인했다고 주장하지 않습니다. 문항에 오픈소스 라이선스를 임의로 부여하지 않았습니다.
+
+## 개인정보
+응답은 메모리에만 존재합니다. localStorage, 쿠키, URL, 서버에 기록하지 않으며 새로고침으로 초기화됩니다. 외부 폰트, 분석 도구, AI API를 사용하지 않습니다. 호스팅 제공자의 일반 접속 로그는 별도 정책에 따릅니다. 인쇄/PDF 저장은 브라우저 기능입니다.

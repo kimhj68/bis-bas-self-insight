@@ -1,0 +1,6 @@
+const test=require('node:test');const assert=require('node:assert/strict');const {score,interpretation}=require('../site/scoring.js');
+test('BIS reverse scoring reaches true minimum and maximum',()=>{let min=Array(20).fill(1);min[4]=min[6]=4;assert.deepEqual(score(min).map(x=>x.sum),[7,5,4,4]);let max=Array(20).fill(4);max[4]=max[6]=1;assert.deepEqual(score(max).map(x=>x.sum),[28,20,16,16]);});
+test('provided example totals and averages',()=>{const a=[3,3,3,3,2,3,2,4,4,4,3,3,3,3,2,2,2,2,2,2];assert.deepEqual(score(a).map(x=>x.sum),[21,18,10,8]);assert.deepEqual(score(a).map(x=>x.mean),[3,3.6,2.5,2]);});
+test('reject incomplete, sparse, and out of range responses',()=>{for(const a of [[],Array(20),Array(20).fill(null),Array(20).fill(0),Array(20).fill(5),Array(20).fill('3')])assert.throws(()=>score(a));});
+test('only items 5 and 7 are reversed',()=>{const base=Array(20).fill(2);for(let i=0;i<20;i++){let changed=base.slice();changed[i]=3;const deltas=score(changed).map((g,j)=>g.sum-score(base)[j].sum);assert.equal(deltas.reduce((a,b)=>a+b,0),[4,6].includes(i)?-1:1);assert.equal(deltas.filter(v=>v!==0).length,1);}});
+test('interpretation uses actual mean before rounding',()=>{assert.match(interpretation(2.96),/별로 그렇지 않다.*대체로 그렇다/);assert.match(interpretation(3),/‘대체로 그렇다’에/);});
